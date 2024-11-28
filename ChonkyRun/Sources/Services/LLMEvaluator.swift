@@ -1,7 +1,7 @@
 // Copyright © 2024 Apple Inc.
 
 import Foundation
-import LLM
+import MLXLLM
 import MLX
 import MLXRandom
 import os
@@ -22,9 +22,7 @@ class LLMEvaluator {
   var inputTokenCount = 0
   var outputTokenCount = 0
 
-  /// This controls which model loads. `phi3_5_4bit` is one of the smaller ones, so this will fit on
-  /// more devices.
-  let modelConfiguration = ModelConfiguration.qwen2_3b4bit
+  let modelConfiguration = ModelConfiguration.llama3_2_3B_4bit
 
   /// parameters controlling the output
   let generateParameters = GenerateParameters(temperature: 1.0)
@@ -53,7 +51,7 @@ class LLMEvaluator {
       llmLogger.info("Starting model load for \(self.modelConfiguration.name)")
       MLX.GPU.set(cacheLimit: 20 * 1024 * 1024)
       
-      let modelContainer = try await LLM.loadModelContainer(configuration: modelConfiguration)
+      let modelContainer = try await MLXLLM.loadModelContainer(configuration: modelConfiguration)
       { [modelConfiguration] progress in
         Task { @MainActor in
           llmLogger.debug("Download progress: \(progress.fractionCompleted)")
@@ -101,7 +99,7 @@ class LLMEvaluator {
       MLXRandom.seed(UInt64(Date.timeIntervalSinceReferenceDate * 1000))
 
       let result = await modelContainer.perform { model, tokenizer in
-        LLM.generate(
+        MLXLLM.generate(
           promptTokens: promptTokens, parameters: generateParameters, model: model,
           tokenizer: tokenizer, extraEOSTokens: modelConfiguration.extraEOSTokens
         ) { tokens in
@@ -109,9 +107,6 @@ class LLMEvaluator {
           return .more
         }
       }
-
-      print("Final tokens: \(result.output)")
-      print("Text: \(result.output.data)")
 
       // Only try to parse JSON after generation is complete
       if let jsonData = result.output.data(using: .utf8) {

@@ -1,19 +1,22 @@
 // Copyright © 2024 Apple Inc.
 
 import SwiftUI
-import LLM
+import MLXLLM
 import MLX
 import MLXRandom
-import MarkdownUI
 import Metal
 import os
+
+private let healthKitLogger = Logger(
+  subsystem: "com.example.LLMEval",
+  category: "HealthKit"
+)
 
 /// The main content view of the application
 struct ContentView: View {
   @State var prompt = ""
   @State private var viewModel = TrainingScheduleViewModel()
   @State var llm: LLMEvaluator
-  @State private var deviceStat = DeviceStat()
   @State private var healthKitManager = HealthKitManager()
   @State private var isLoadingWorkouts = false
   @State private var showHealthKitError = false
@@ -52,23 +55,6 @@ struct ContentView: View {
       Text(healthKitError?.localizedDescription ?? "Unknown error")
     }
     .toolbar {
-      ToolbarItem {
-        Label(
-          "Memory Usage: \(deviceStat.gpuUsage.activeMemory.formatted(.byteCount(style: .memory)))",
-          systemImage: "info.circle.fill"
-        )
-        .labelStyle(.titleAndIcon)
-        .padding(.horizontal)
-        .help(
-          Text(
-            """
-            Active Memory: \(deviceStat.gpuUsage.activeMemory.formatted(.byteCount(style: .memory)))/\(GPU.memoryLimit.formatted(.byteCount(style: .memory)))
-            Cache Memory: \(deviceStat.gpuUsage.cacheMemory.formatted(.byteCount(style: .memory)))/\(GPU.cacheLimit.formatted(.byteCount(style: .memory)))
-            Peak Memory: \(deviceStat.gpuUsage.peakMemory.formatted(.byteCount(style: .memory)))
-            """
-          )
-        )
-      }
       ToolbarItem(placement: .primaryAction) {
         Button {
           Task {
