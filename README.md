@@ -1,14 +1,6 @@
 # ChonkyRun
 
-ChonkyRun is a Swift-based application that helps you track and manage your running activities with a focus on fun and engagement.
-
-## Overview
-
-ChonkyRun provides a delightful way to:
-
-- Track your running sessions
-- Monitor your progress
-- Stay motivated with engaging visuals
+ChonkyRun is an experimental project to try [MLX Swift](https://github.com/ml-explore/mlx-swift) for on-device inference of HealthKit data. I made this app to track and manage my running activities with a focus on progression every week.
 
 ## Requirements
 
@@ -21,7 +13,7 @@ ChonkyRun provides a delightful way to:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/ChonkyRun.git
+git clone https://github.com/rudrankriyam/ChonkyRun.git
 cd ChonkyRun
 ```
 
@@ -35,24 +27,6 @@ open ChonkyRun.xcodeproj
 
 - Select your target device or simulator
 - Press ⌘R or click the Play button
-
-## Project Structure
-
-```
-ChonkyRun/
-├── Sources/           # Core application source files
-├── Assets.xcassets/   # Image and color assets
-├── Preview Content/   # SwiftUI preview assets
-└── ChonkyRunApp.swift # Main application entry point
-```
-
-## Development
-
-The project uses:
-
-- SwiftUI for the user interface
-- Swift Package Manager for dependency management
-- Xcode's built-in build system
 
 ## Contributing
 
@@ -71,5 +45,3 @@ This project is licensed under the terms found in the LICENSE file.
 For support, please open an issue in the GitHub repository or contact the maintainers.
 
 ---
-
-© 2023 ChonkyRun. All rights reserved.
