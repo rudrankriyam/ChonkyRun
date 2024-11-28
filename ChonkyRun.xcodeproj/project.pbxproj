@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0AF299B42CF8D79500512E8C /* LLM in Frameworks */ = {isa = PBXBuildFile; productRef = 0AF299B32CF8D79500512E8C /* LLM */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		0A13474A2CF8D3C500DA5314 /* ChonkyRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChonkyRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AF299B42CF8D79500512E8C /* LLM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = ChonkyRun;
 			packageProductDependencies = (
+				0AF299B32CF8D79500512E8C /* LLM */,
 			);
 			productName = ChonkyRun;
 			productReference = 0A13474A2CF8D3C500DA5314 /* ChonkyRun.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 0A1347412CF8D3C500DA5314;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0AF299B22CF8D79500512E8C /* XCRemoteSwiftPackageReference "mlx-swift-examples" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0A13474B2CF8D3C500DA5314 /* Products */;
 			projectDirPath = "";
@@ -324,6 +333,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0AF299B22CF8D79500512E8C /* XCRemoteSwiftPackageReference "mlx-swift-examples" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ml-explore/mlx-swift-examples/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.18.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0AF299B32CF8D79500512E8C /* LLM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AF299B22CF8D79500512E8C /* XCRemoteSwiftPackageReference "mlx-swift-examples" */;
+			productName = LLM;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0A1347422CF8D3C500DA5314 /* Project object */;
 }

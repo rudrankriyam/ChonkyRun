@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MLXLLM
 
 struct ContentView: View {
     var body: some View {
