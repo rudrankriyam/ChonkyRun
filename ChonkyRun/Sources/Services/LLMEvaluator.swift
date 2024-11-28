@@ -12,7 +12,7 @@ private let llmLogger = Logger(
 )
 
 @Observable
-class LLMEvaluator {
+final class LLMEvaluator: @unchecked Sendable {
   private let viewModel: TrainingScheduleViewModel
   
   var running = false

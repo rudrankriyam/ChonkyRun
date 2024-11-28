@@ -9,7 +9,7 @@ private let healthKitLogger = Logger(
   category: "HealthKit"
 )
 
-@Observable class HealthKitManager {
+@Observable final class HealthKitManager: @unchecked Sendable {
   private let healthStore = HKHealthStore()
   var workouts: [HKWorkout] = []
   var error: Error?
