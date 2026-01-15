@@ -1,4 +1,6 @@
 # ChonkyRun
+[![Star History Chart](https://api.star-history.com/svg?repos=rudrankriyam/ChonkyRun&type=Date)](https://star-history.com/#rudrankriyam/ChonkyRun&Date)
+
 
 ChonkyRun is an experimental iOS application that combines **HealthKit data analysis** with **on-device AI inference** using **MLX Swift** to create personalized running training plans. This privacy-first approach uses local machine learning to analyze your running history and generate progressive training schedules to improve your 5K and 10K performance.
 
